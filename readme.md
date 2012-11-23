@@ -19,6 +19,29 @@ execFile(jpegtranPath, ['-outfile', 'output.jpg', 'input.jpg'], function(err, st
 You can also run directly from `./node_modules/.bin/jpegtran`
 
 
+## Dev
+
+Note to self on how to update the binaries.
+
+### OS X
+
+- [Download source](http://sourceforge.net/projects/libjpeg-turbo/files/)
+- Extract and `cd` into that folder
+- Run `./configure --disable-shared --host i686-apple-darwin CFLAGS='-O3 -m32' LDFLAGS=-m32 && make`
+
+### Linux
+
+- [Download source](http://sourceforge.net/projects/libjpeg-turbo/files/)
+- Extract and `cd` into that folder
+- Run `./configure --disable-shared --host i686-pc-linux-gnu CFLAGS='-O3 -m32' LDFLAGS=-m32 && make`
+
+### Windows
+
+- Download the [Windows files 32/64-bit](http://sourceforge.net/projects/libjpeg-turbo/files/) on a Windows machine
+- Run the downloaded file to extract
+- Go to the `bin` folder at the destination and copy jpegtran.exe
+
+
 ## License
 
 Everything excluding the binaries licensed under the [BSD license](http://opensource.org/licenses/bsd-license.php) and copyright Google.
