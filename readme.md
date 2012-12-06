@@ -1,4 +1,4 @@
-# node-jpegtran [![Build Status](https://secure.travis-ci.org/yeoman/node-jpegtran.png?branch=master)](http://travis-ci.org/yeoman/node-jpegtran)
+# node-jpegtran-bin [![Build Status](https://secure.travis-ci.org/yeoman/node-jpegtran-bin.png?branch=master)](http://travis-ci.org/yeoman/node-jpegtran-bin)
 
 jpegtran 1.2.1 (part of [libjpeg-turbo](http://libjpeg-turbo.virtualgl.org/)) Node.js wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Most commonly used to losslessly minify JPEG images.
 
@@ -9,14 +9,14 @@ jpegtran 1.2.1 (part of [libjpeg-turbo](http://libjpeg-turbo.virtualgl.org/)) No
 
 ```js
 var execFile = require('child_process').execFile;
-var jpegtranPath = require('jpegtran').path;
+var jpegtranPath = require('jpegtran-bin').path;
 
 execFile(jpegtranPath, ['-outfile', 'output.jpg', 'input.jpg'], function(err, stdout, stderr) {
 	console.log('Image minified');
 });
 ```
 
-You can also run directly from `./node_modules/.bin/jpegtran`
+You can also run directly from `./node_modules/.bin/jpegtran-bin`
 
 
 ## Dev

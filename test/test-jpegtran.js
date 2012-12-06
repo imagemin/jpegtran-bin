@@ -12,7 +12,7 @@ describe('jpegtran', function() {
 	});
 
 	it('should return path to jpegtran binary', function(cb) {
-		var binPath = require('../lib/jpegtran').path;
+		var binPath = require('../lib/jpegtran-bin').path;
 
 		exec(binPath + ' -v -', function(err, stdout, stderr) {
 			assert(stderr.toString().indexOf('libjpeg-turbo') !== -1);
@@ -21,7 +21,7 @@ describe('jpegtran', function() {
 	});
 
 	it('should successfully proxy jpegtran', function(cb) {
-		var binPath = path.join(__dirname, '../bin/jpegtran');
+		var binPath = path.join(__dirname, '../bin/jpegtran-bin');
 
 		exec(binPath + ' -v -', function(err, stdout, stderr) {
 			assert(stderr.toString().indexOf('libjpeg-turbo') !== -1);
@@ -30,7 +30,7 @@ describe('jpegtran', function() {
 	});
 
 	it('should minify a .jpg', function(cb) {
-		var binPath = path.join(__dirname, '../bin/jpegtran');
+		var binPath = path.join(__dirname, '../bin/jpegtran-bin');
 		var args = [
 			'-copy', 'none',
 			'-optimize',

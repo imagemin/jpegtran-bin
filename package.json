@@ -1,20 +1,20 @@
 {
-	"name": "jpegtran",
+	"name": "jpegtran-bin",
 	"version": "0.1.0",
 	"description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Most commonly used to losslessly minify JPEG images.",
 	"keywords": ["jpeg", "jpg", "img", "image", "compress", "minify", "optimize"],
-	"homepage": "https://github.com/yeoman/node-jpegtran",
-	"bugs": "https://github.com/yeoman/node-jpegtran/issues",
+	"homepage": "https://github.com/yeoman/node-jpegtran-bin",
+	"bugs": "https://github.com/yeoman/node-jpegtran-bin/issues",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
 		"url": "http://sindresorhus.com"
 	},
-	"main": "lib/jpegtran.js",
-	"bin": "bin/jpegtran",
+	"main": "lib/jpegtran-bin.js",
+	"bin": "bin/jpegtran-bin",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/yeoman/node-jpegtran.git"
+		"url": "git://github.com/yeoman/node-jpegtran-bin.git"
 	},
 	"scripts": {
 		"test": "node node_modules/mocha/bin/mocha test/test-*.js"
