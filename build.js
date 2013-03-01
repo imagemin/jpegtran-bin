@@ -12,12 +12,22 @@ which ('make', function (err) {
 
     if (process.platform === 'darwin' || process.platform === 'linux') {
         var binDir = path.dirname(binPath);
-        var host = (process.platform === 'darwin') ? ' --host i686-apple-darwin' : '';
-        var buildScript = './configure --disable-shared ' + host + ' CFLAGS=\'-O3 -m64\' LDFLAGS=-m64 && ' +
-                          'make install prefix=' + __dirname + '/libjpeg-turbo/ bindir=' + binDir + ' bin_PROGRAMS=jpegtran'
+        var configureFlags = '--disable-shared ';
+        if (process.platform === 'darwin'){
+            configureFlags += '--host i686-apple-darwin ';
+        }
+        if (process.platform === 'linux' && process.arch === 'x64'){
+            configureFlags += 'CFLAGS=\'-O3 -m64\' LDFLAGS=-m64';
+        } else {
+            configureFlags += 'CFLAGS=\'-O3 -m32\' LDFLAGS=-m32';
+        }
+
+        var buildScript = './configure ' + configureFlags + ' &&' +
+                          'make install prefix=' + __dirname + '/libjpeg-turbo/ bindir=' + binDir + ' bin_PROGRAMS=jpegtran';
+
         exec(buildScript, { cwd: './libjpeg-turbo/' }, function (err) {
             if (err) {
-                return console.log(err.red);
+                return console.log(err);
             }
 
             console.log('libjpeg-turbo rebuilt successfully'.green);
