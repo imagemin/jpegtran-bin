@@ -6,12 +6,12 @@ var which = require('which');
 var binPath = require('./lib/jpegtran-bin.js').path;
 
 module.exports = function(){
-    which('make', function (err) {
-        if (err) {
-            return console.log(err.red);
-        }
+    if (process.platform === 'darwin' || process.platform === 'linux') {
+        which('make', function (err) {
+            if (err) {
+                return console.log(err);
+            }
 
-        if (process.platform === 'darwin' || process.platform === 'linux') {
             var binDir = path.dirname(binPath);
             var configureFlags = '--disable-shared ';
 
@@ -37,6 +37,6 @@ module.exports = function(){
 
                 console.log('libjpeg-turbo rebuilt successfully'.green);
             });
-        }
-    });
+        });
+    }
 }
