@@ -5,7 +5,7 @@ var colors = require('colors');
 var which = require('which');
 var binPath = require('./lib/jpegtran-bin.js').path;
 
-module.exports = function(){
+module.exports = function () {
     if (process.platform === 'darwin' || process.platform === 'linux') {
         which('make', function (err) {
             if (err) {
