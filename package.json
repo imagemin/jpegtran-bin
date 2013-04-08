@@ -18,6 +18,11 @@
     "email": "sindresorhus@gmail.com",
     "url": "http://sindresorhus.com"
   },
+  "maintainers": [
+    {
+      "name": "Duncan Wong"
+    }
+  ],
   "main": "lib/jpegtran-bin.js",
   "bin": "bin/jpegtran-bin",
   "repository": {
