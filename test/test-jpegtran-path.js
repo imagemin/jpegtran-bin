@@ -5,7 +5,7 @@ var assert = require('assert');
 var path = require('path');
 var fs = require('fs');
 var exec = require('child_process').exec;
-console.log('DIR', __dirname);
+
 describe('jpegtran', function() {
 	after(function() {
 		fs.unlinkSync('test/minified.jpg');
