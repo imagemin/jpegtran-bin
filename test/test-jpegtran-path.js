@@ -6,30 +6,30 @@ var path = require('path');
 var fs = require('fs');
 var exec = require('child_process').exec;
 
-describe('jpegtran', function() {
-	after(function() {
+describe('jpegtran', function () {
+	after(function () {
 		fs.unlinkSync('test/minified.jpg');
 	});
 
-	it('should return path to jpegtran binary', function(cb) {
+	it('should return path to jpegtran binary', function (cb) {
 		var binPath = require('../lib/jpegtran-bin').path;
 
-		exec(binPath + ' -v -', function(err, stdout, stderr) {
+		exec(binPath + ' -v -', function (err, stdout, stderr) {
 			assert(stderr.toString().indexOf('libjpeg-turbo') !== -1);
 			cb();
 		});
 	});
 
-	it('should successfully proxy jpegtran', function(cb) {
+	it('should successfully proxy jpegtran', function (cb) {
 		var binPath = path.join(__dirname, '../bin/jpegtran-bin');
 
-		exec(binPath + ' -v -', function(err, stdout, stderr) {
+		exec('node ' + binPath + ' -v -', function (err, stdout, stderr) {
 			assert(stderr.toString().indexOf('libjpeg-turbo') !== -1);
 			cb();
 		});
 	});
 
-	it('should minify a .jpg', function(cb) {
+	it('should minify a .jpg', function (cb) {
 		var binPath = path.join(__dirname, '../bin/jpegtran-bin');
 		var args = [
 			'-copy', 'none',
@@ -38,7 +38,7 @@ describe('jpegtran', function() {
 			path.join(__dirname, 'fixtures', 'test.jpg')
 		];
 
-		exec(binPath + ' ' + args.join(' '), function() {
+		exec('node ' + binPath + ' ' + args.join(' '), function () {
 			var actual = fs.statSync('test/minified.jpg').size;
 			var original = fs.statSync('test/fixtures/test.jpg').size;
 			assert(actual < original);
