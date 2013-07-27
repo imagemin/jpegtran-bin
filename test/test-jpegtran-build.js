@@ -1,8 +1,9 @@
 /*global describe, it */
 'use strict';
+
 var fs = require('fs');
-var assert = require('assert');
 var exec = require('child_process').exec;
+var assert = require('assert');
 var binPath = require('../lib/jpegtran-bin.js').path;
 
 describe('JPEGTran rebuild', function () {

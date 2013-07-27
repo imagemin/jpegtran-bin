@@ -1,10 +1,10 @@
 /*global describe, it, after */
 'use strict';
 
-var assert = require('assert');
-var path = require('path');
 var fs = require('fs');
+var path = require('path');
 var exec = require('child_process').exec;
+var assert = require('assert');
 
 describe('jpegtran', function () {
 	after(function () {
