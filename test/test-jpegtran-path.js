@@ -1,10 +1,10 @@
 /*global describe, it, after */
 'use strict';
 
-var assert = require('assert');
-var path = require('path');
 var fs = require('fs');
+var path = require('path');
 var exec = require('child_process').exec;
+var assert = require('assert');
 
 describe('jpegtran', function () {
 	after(function () {
@@ -12,7 +12,7 @@ describe('jpegtran', function () {
 	});
 
 	it('should return path to jpegtran binary', function (cb) {
-		var binPath = require('../lib/jpegtran-bin').path;
+		var binPath = require('../lib/jpegtran-bin').binPath;
 
 		exec('"' + binPath + '" -v -', function (err, stdout, stderr) {
 			assert(stderr.toString().indexOf('libjpeg-turbo') !== -1);
