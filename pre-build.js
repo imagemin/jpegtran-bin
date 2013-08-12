@@ -5,7 +5,9 @@ var request = require('request');
 var chalk = require('chalk');
 var Mocha = require('mocha');
 var mocha = new Mocha({ui: 'bdd', reporter: 'min'});
-var build = require('./build.js');
+var build = require('./build');
+var jpegtran = require('./lib/jpegtran');
+var binPath = jpegtran.path;
 
 function runTest() {
 	mocha.addFile('test/test-path.js');
@@ -19,28 +21,21 @@ function runTest() {
 	});
 }
 
-var binPath = require('./lib/jpegtran').path;
-var binUrl = require('./lib/jpegtran').url;
-var dllPath = require('./lib/jpegtran').pathDll;
-var dllUrl = require('./lib/jpegtran').urlDll;
-
-fs.exists(binPath, function (exists) {
-	if (exists) {
-		runTest();
-	} else {
-		request.get(binUrl)
-			.pipe(fs.createWriteStream(binPath))
-			.on('close', function () {
-				fs.chmod(binPath, '0755');
-				if (process.platform === 'win32') {
-					request.get(dllUrl)
-						.pipe(fs.createWriteStream(dllPath))
-						.on('close', function () {
-							runTest();
-						});
-				} else {
-					runTest();
-				}
-			});
-	}
-});
+if (fs.exists(binPath)) {
+	runTest();
+} else {
+	request.get(jpegtran.url)
+		.pipe(fs.createWriteStream(binPath))
+		.on('close', function () {
+			fs.chmod(binPath, '0755');
+			if (process.platform === 'win32') {
+				request.get(jpegtran.urlDll)
+					.pipe(fs.createWriteStream(jpegtran.pathDll))
+					.on('close', function () {
+						runTest();
+					});
+			} else {
+				runTest();
+			}
+		});
+}
