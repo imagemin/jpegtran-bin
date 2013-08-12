@@ -1,10 +1,9 @@
 /*global describe, it */
 'use strict';
-
 var fs = require('fs');
 var exec = require('child_process').exec;
 var assert = require('assert');
-var binPath = require('../lib/jpegtran-bin.js').path;
+var binPath = require('../lib/jpegtran.js').path;
 
 describe('JPEGTran rebuild', function () {
 	it('it should rebuild the jpegtran binaries', function (cb) {

@@ -1,7 +1,7 @@
 {
   "name": "jpegtran-bin",
   "version": "0.1.7",
-  "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux and Windows. Most commonly used to losslessly minify JPEG images.",
+  "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD and Windows. Most commonly used to losslessly minify JPEG images.",
   "keywords": [
     "jpeg",
     "jpg",
@@ -13,6 +13,7 @@
   ],
   "homepage": "https://github.com/yeoman/node-jpegtran-bin",
   "bugs": "https://github.com/yeoman/node-jpegtran-bin/issues",
+  "license": "BSD",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
@@ -23,8 +24,10 @@
       "name": "Duncan Wong"
     }
   ],
-  "main": "lib/jpegtran-bin.js",
-  "bin": "bin/jpegtran-bin",
+  "main": "lib/jpegtran",
+  "bin": {
+    "jpegtran": "bin/jpegtran.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/yeoman/node-jpegtran-bin.git"
@@ -36,16 +39,16 @@
   "engines": {
     "node": ">=0.8.0"
   },
-  "licenses": [
-    {
-      "type": "BSD"
-    }
-  ],
   "dependencies": {
-    "colors": "~0.6.0",
     "which": "~1.0.5",
-    "mocha": "~1.9.0",
+    "mocha": "~1.12.0",
     "tar": "~0.1.17",
-    "request": "~2.16.6"
-  }
+    "request": "~2.26.0",
+    "chalk": "~0.2.0"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "test"
+  ]
 }
