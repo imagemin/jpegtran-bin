@@ -8,7 +8,7 @@ var mocha = new Mocha({ui: 'bdd', reporter: 'min'});
 var build = require('./build.js');
 
 function runTest() {
-	mocha.addFile('test/test-jpegtran-path.js');
+	mocha.addFile('test/test-path.js');
 	mocha.run(function (failures) {
 		if (failures > 0) {
 			console.log('pre-build test failed, compiling from source...'.red);
