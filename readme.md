@@ -21,7 +21,7 @@ execFile(jpegtranPath, ['-outfile', 'output.jpg', 'input.jpg'], function(err, st
 });
 ```
 
-You can also run directly from `./node_modules/.bin/jpegtran-bin`
+You can also run directly from `./node_modules/.bin/jpegtran`
 
 
 ## Dev

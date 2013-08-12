@@ -1,5 +1,4 @@
 'use strict';
-
 var exec = require('child_process').exec;
 var path = require('path');
 var which = require('which');
@@ -9,7 +8,7 @@ var request = require('request');
 var zlib = require('zlib');
 
 var version = '1.2.90';
-var binPath = require('./lib/jpegtran-bin').path;
+var binPath = require('./lib/jpegtran').path;
 var tmpPath = path.join(tmpdir(), 'libjpeg-turbo-' + version);
 var urlPath = 'http://downloads.sourceforge.net/project/libjpeg-turbo/1.2.90%20%281.3beta1%29/libjpeg-turbo-' + version + '.tar.gz';
 

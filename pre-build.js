@@ -1,5 +1,4 @@
 'use strict';
-
 var fs = require('fs');
 var path = require('path');
 var request = require('request');
@@ -20,10 +19,10 @@ function runTest() {
 	});
 }
 
-var binPath = require('./lib/jpegtran-bin').path;
-var binUrl = require('./lib/jpegtran-bin').url;
-var dllPath = require('./lib/jpegtran-bin').pathDll;
-var dllUrl = require('./lib/jpegtran-bin').urlDll;
+var binPath = require('./lib/jpegtran').path;
+var binUrl = require('./lib/jpegtran').url;
+var dllPath = require('./lib/jpegtran').pathDll;
+var dllUrl = require('./lib/jpegtran').urlDll;
 
 fs.exists(binPath, function (exists) {
 	if (exists) {

@@ -1,6 +1,5 @@
 /*global describe, it, after */
 'use strict';
-
 var fs = require('fs');
 var path = require('path');
 var exec = require('child_process').exec;
@@ -12,7 +11,7 @@ describe('jpegtran', function () {
 	});
 
 	it('should return path to jpegtran binary', function (cb) {
-		var binPath = require('../lib/jpegtran-bin').path;
+		var binPath = require('../lib/jpegtran').path;
 
 		exec('"' + binPath + '" -v -', function (err, stdout, stderr) {
 			assert(stderr.toString().indexOf('libjpeg-turbo') !== -1);
@@ -21,7 +20,7 @@ describe('jpegtran', function () {
 	});
 
 	it('should successfully proxy jpegtran', function (cb) {
-		var binPath = path.join(__dirname, '../bin/jpegtran-bin');
+		var binPath = path.join(__dirname, '../bin/jpegtran.js');
 
 		exec('node "' + binPath + '" -v -', function (err, stdout, stderr) {
 			assert(stderr.toString().indexOf('libjpeg-turbo') !== -1);
@@ -30,7 +29,7 @@ describe('jpegtran', function () {
 	});
 
 	it('should minify a .jpg', function (cb) {
-		var binPath = path.join(__dirname, '../bin/jpegtran-bin');
+		var binPath = path.join(__dirname, '../bin/jpegtran.js');
 		var args = [
 			'-copy', 'none',
 			'-optimize',
