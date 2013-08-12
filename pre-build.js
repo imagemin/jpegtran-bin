@@ -2,7 +2,7 @@
 var fs = require('fs');
 var path = require('path');
 var request = require('request');
-var colors = require('colors');
+var chalk = require('chalk');
 var Mocha = require('mocha');
 var mocha = new Mocha({ui: 'bdd', reporter: 'min'});
 var build = require('./build.js');
@@ -11,10 +11,10 @@ function runTest() {
 	mocha.addFile('test/test-path.js');
 	mocha.run(function (failures) {
 		if (failures > 0) {
-			console.log('pre-build test failed, compiling from source...'.red);
+			console.log(chalk.red('pre-build test failed, compiling from source...'));
 			build();
 		} else {
-			console.log('pre-build test passed successfully, skipping build...'.green);
+			console.log(chalk.green('pre-build test passed successfully, skipping build...'));
 		}
 	});
 }
