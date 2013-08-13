@@ -22,7 +22,7 @@ function runTest() {
 	});
 }
 
-if (fs.exists(binPath)) {
+if (fs.existsSync(binPath)) {
 	runTest();
 } else {
 	if (!fs.existsSync(path.dirname(binPath))) {
