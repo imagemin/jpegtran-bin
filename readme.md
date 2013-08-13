@@ -17,7 +17,7 @@ var execFile = require('child_process').execFile;
 var jpegtranPath = require('jpegtran-bin').path;
 
 execFile(jpegtranPath, ['-outfile', 'output.jpg', 'input.jpg'], function() {
-	console.log('Image minified');
+    console.log('Image minified');
 });
 ```
 
