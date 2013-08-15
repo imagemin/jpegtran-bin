@@ -9,9 +9,9 @@ var request = require('request');
 var zlib = require('zlib');
 var tmpdir = os.tmpdir ? os.tmpdir() : os.tmpDir();
 var binPath = require('./lib/jpegtran').path;
-var version = '1.2.90';
+var version = '1.3.0';
 var tmpPath = path.join(tmpdir, 'libjpeg-turbo-' + version);
-var urlPath = 'http://downloads.sourceforge.net/project/libjpeg-turbo/1.2.90%20%281.3beta1%29/libjpeg-turbo-' + version + '.tar.gz';
+var urlPath = 'http://downloads.sourceforge.net/project/libjpeg-turbo/' + version + '/libjpeg-turbo-' + version + '.tar.gz';
 
 module.exports = function () {
 	if (!(process.platform === 'darwin' || process.platform === 'linux')) {
