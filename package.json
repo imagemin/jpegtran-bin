@@ -1,6 +1,6 @@
 {
   "name": "jpegtran-bin",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD, Solaris and Windows. Most commonly used to losslessly minify JPEG images.",
   "keywords": [
     "jpeg",
@@ -50,6 +50,8 @@
   "files": [
     "bin",
     "lib",
-    "test"
+    "test",
+    "build.js",
+    "pre-build.js"
   ]
 }
