@@ -16,7 +16,7 @@ function runTest(done) {
         done(failures > 0);
 	});
 }
-function fetchBinary(done){
+function fetchBinary(done) {
 	return request.get(jpegtran.url)
 		.pipe(fs.createWriteStream(binPath))
 		.on('close', function () {
@@ -33,12 +33,12 @@ function fetchBinary(done){
 		});
 }
 
-runTest(function(err){
+runTest(function(err) {
     if (!err) return console.log(chalk.green('pre-build test passed successfully, skipping build...'));
 
     console.log(chalk.red('pre-build packaged binary test failed'));
-    fetchBinary(function(){
-        runTest(function(err){
+    fetchBinary(function() {
+        runTest(function(err) {
             if (!err) return console.log(chalk.green('pre-build test passed successfully, skipping build...'));
 
             console.log(chalk.red('pre-build fetched binary test failed, attempt compiling'));
