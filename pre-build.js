@@ -10,25 +10,13 @@ var build = require('./build');
 var jpegtran = require('./lib/jpegtran');
 var binPath = jpegtran.path;
 
-function runTest() {
+function runTest(done) {
 	mocha.addFile('test/test-path.js');
 	mocha.run(function (failures) {
-		if (failures > 0) {
-			console.log(chalk.red('pre-build test failed, compiling from source...'));
-			build();
-		} else {
-			console.log(chalk.green('pre-build test passed successfully, skipping build...'));
-		}
+        done(failures > 0);
 	});
 }
-
-if (fs.existsSync(binPath)) {
-	runTest();
-} else {
-	if (!fs.existsSync(path.dirname(binPath))) {
-		mkdir.sync(path.dirname(binPath));
-	}
-
+function fetchBinary(done) {
 	return request.get(jpegtran.url)
 		.pipe(fs.createWriteStream(binPath))
 		.on('close', function () {
@@ -37,10 +25,25 @@ if (fs.existsSync(binPath)) {
 				request.get(jpegtran.urlDll)
 					.pipe(fs.createWriteStream(jpegtran.pathDll))
 					.on('close', function () {
-						runTest();
+						done();
 					});
 			} else {
-				runTest();
+				done();
 			}
 		});
 }
+
+runTest(function(err) {
+    if (!err) return console.log(chalk.green('pre-build test passed successfully, skipping build...'));
+
+    console.log(chalk.red('pre-build packaged binary test failed'));
+    fetchBinary(function() {
+        runTest(function(err) {
+            if (!err) return console.log(chalk.green('pre-build test passed successfully, skipping build...'));
+
+            console.log(chalk.red('pre-build fetched binary test failed, attempt compiling'));
+            build();
+        });
+    }); 
+});
+
