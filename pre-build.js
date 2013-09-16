@@ -10,6 +10,11 @@ var build = require('./build');
 var jpegtran = require('./lib/jpegtran');
 var binPath = jpegtran.path;
 
+var proxyServer = process.env.HTTPS_PROXY
+	|| process.env.https_proxy
+	|| process.env.HTTP_PROXY
+	|| process.env.http_proxy;
+
 function runTest() {
 	mocha.addFile('test/test-path.js');
 	mocha.run(function (failures) {
@@ -28,6 +33,10 @@ if (fs.existsSync(binPath)) {
 	if (!fs.existsSync(path.dirname(binPath))) {
 		mkdir.sync(path.dirname(binPath));
 	}
+
+	if (proxyServer) {
+    	request = request.defaults({ proxy: proxyServer, timeout: 5000 });
+  	}
 
 	return request.get(jpegtran.url)
 		.pipe(fs.createWriteStream(binPath))
