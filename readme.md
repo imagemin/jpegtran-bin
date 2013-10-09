@@ -7,7 +7,7 @@ jpegtran 1.3 (part of [libjpeg-turbo](http://libjpeg-turbo.virtualgl.org/)) Node
 
 ## Install
 
-Install with [npm](https://npmjs.org/package/jpegtran-bin): `npm install --save jpegtran-bin`
+- Install with [npm](https://npmjs.org/package/jpegtran-bin): `npm install --save jpegtran-bin`
 
 
 ## Example usage
@@ -30,7 +30,9 @@ Note to self on how to update the binaries.
 
 ### OS X and Linux
 
-Run `npm install` to build the binary.
+- Run `npm install` to build the binary.
+
+The `nasm` (Netwide Assember) package is required to build the binary on Ubuntu.
 
 ### Windows
 
