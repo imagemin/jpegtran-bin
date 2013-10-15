@@ -16,7 +16,11 @@ describe('jpegtran.build()', function () {
 		bin.buildScript = './configure --disable-shared --bindir=' + path.join(__dirname, '../tmp') + ' && ' +
 						  'make install';
 
-		bin.build(function () {
+		bin.build(function (err) {
+			if (err) {
+				cb(err);
+			}
+
 			var origCTime = fs.statSync(bin.path).ctime;
 			var actualCTime = fs.statSync(bin.path).ctime;
 
