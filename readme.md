@@ -37,8 +37,12 @@ The `nasm` (Netwide Assember) package is required to build the binary on Ubuntu.
 ### Windows
 
 - Download the [Windows files 32/64-bit](http://sourceforge.net/projects/libjpeg-turbo/files/) (GCC compiled) on a Windows machine
+
+  (current version 1.3.0, x64 `libjpeg-turbo-1.3.0-gcc64.exe` and for x86 `libjpeg-turbo-1.3.0-gcc.exe`)
 - Run the downloaded file to extract
-- Go to the `bin` folder at the destination and copy `jpegtran.exe` and `libjpeg-62.dll`
+- In the extracted folder go to the `bin` folder and copy `jpegtran.exe` and `libjpeg-62.dll` to `jpegtran-bin\vendor\` folder
+  
+  (for `grunt-contrib-imagemin` the folder is `grunt-contrib-imagemin\node_modules\jpegtran-bin\vendor\`)
 
 
 ## License
