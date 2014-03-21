@@ -25,6 +25,8 @@ var args = [
 
 fs.exists(bin.path, function (exists) {
 	if (!exists) {
+		fs.mkdirSync(path.join(__dirname, 'test/tmp'));
+
 		bin
 			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/osx/jpegtran', 'darwin')
 			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/linux/x86/jpegtran', 'linux', 'x86')
