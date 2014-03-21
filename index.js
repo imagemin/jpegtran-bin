@@ -26,16 +26,16 @@ var args = [
 fs.exists(bin.path, function (exists) {
 	if (!exists) {
 		bin
-			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/osx/jpegtran', 'darwin')
-			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/linux/x86/jpegtran', 'linux', 'x86')
-			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/linux/x64/jpegtran', 'linux', 'x64')
-			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/freebsd/jpegtran', 'freebsd')
-			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/sunos/x86/jpegtran', 'sunos', 'x86')
-			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/sunos/x64/jpegtran', 'sunos', 'x64')
-			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/win/x86/jpegtran.exe', 'win32', 'x86')
-			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/win/x64/jpegtran.exe', 'win32', 'x64')
-			.addFile('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/win/x86/libjpeg-62.dll', 'win32', 'x86')
-			.addFile('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.3/vendor/win/x64/libjpeg-62.dll', 'win32', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/osx/jpegtran', 'darwin')
+			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/linux/x86/jpegtran', 'linux', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/linux/x64/jpegtran', 'linux', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/freebsd/jpegtran', 'freebsd')
+			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/sunos/x86/jpegtran', 'sunos', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/sunos/x64/jpegtran', 'sunos', 'x64')
+			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/win/x86/jpegtran.exe', 'win32', 'x86')
+			.addUrl('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/win/x64/jpegtran.exe', 'win32', 'x64')
+			.addFile('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/win/x86/libjpeg-62.dll', 'win32', 'x86')
+			.addFile('https://raw.github.com/yeoman/node-jpegtran-bin/0.2.4/vendor/win/x64/libjpeg-62.dll', 'win32', 'x64')
 			.addSource('http://downloads.sourceforge.net/project/libjpeg-turbo/1.3.0/libjpeg-turbo-1.3.0.tar.gz')
 			.check(args)
 			.on('error', function (err) {
