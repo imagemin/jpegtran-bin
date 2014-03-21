@@ -14,8 +14,10 @@ describe('jpegtran()', function () {
 		rm(path.join(__dirname, 'tmp'), cb);
 	});
 
-	beforeEach(function (cb) {
-		fs.mkdir(path.join(__dirname, 'tmp'), cb);
+	beforeEach(function () {
+		if (!fs.existsSync(path.join(__dirname, 'tmp'))) {
+			fs.mkdirSync(path.join(__dirname, 'tmp'));
+		}
 	});
 
 	it('should rebuild the jpegtran binaries', function (cb) {
