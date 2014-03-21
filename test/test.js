@@ -34,7 +34,14 @@ describe('jpegtran()', function () {
 	it('should return path to binary and verify that it is working', function (cb) {
 		var binPath = require('../').path;
 
-		binCheck(binPath, '--version', function (err, works) {
+		var args = [
+			'-copy', 'none',
+			'-optimize',
+			'-outfile', path.join(__dirname, 'tmp/test.jpg'),
+			path.join(__dirname, 'fixtures/test.jpg')
+		];
+
+		binCheck(binPath, args, function (err, works) {
 			cb(assert.equal(works, true));
 		});
 	});
