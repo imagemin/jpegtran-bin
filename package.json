@@ -1,58 +1,58 @@
 {
-  "name": "jpegtran-bin",
-  "version": "0.2.5",
-  "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD, Solaris and Windows. Most commonly used to losslessly minify JPEG images.",
-  "keywords": [
-    "jpeg",
-    "jpg",
-    "img",
-    "image",
-    "compress",
-    "minify",
-    "optimize"
-  ],
-  "homepage": "https://github.com/yeoman/node-jpegtran-bin",
-  "bugs": "https://github.com/yeoman/node-jpegtran-bin/issues",
-  "license": "BSD",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
-  },
-  "maintainers": [
-    {
-      "name": "Kevin Martensson",
-      "email": "kevinmartensson@gmail.com",
-      "url": "http://kevinmartensson.com"
-    }
-  ],
-  "main": "index.js",
-  "bin": {
-    "jpegtran": "cli.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/yeoman/node-jpegtran-bin.git"
-  },
-  "scripts": {
-    "test": "mocha --reporter list --timeout 0",
-    "postinstall": "node index.js"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "dependencies": {
-    "bin-wrapper": "~0.2.0",
-    "chalk": "~0.4.0"
-  },
-  "devDependencies": {
-    "bin-check": "~0.1.0",
-    "mocha": "~1.18.2",
-    "rimraf": "~2.2.6"
-  },
-  "files": [
-    "cli.js",
-    "index.js",
-    "test"
-  ]
+	"name": "jpegtran-bin",
+	"version": "0.2.6",
+	"description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD, Solaris and Windows. Most commonly used to losslessly minify JPEG images.",
+	"keywords": [
+		"jpeg",
+		"jpg",
+		"img",
+		"image",
+		"compress",
+		"minify",
+		"optimize"
+	],
+	"homepage": "https://github.com/yeoman/node-jpegtran-bin",
+	"bugs": "https://github.com/yeoman/node-jpegtran-bin/issues",
+	"license": "BSD",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "http://sindresorhus.com"
+	},
+	"maintainers": [
+		{
+			"name": "Kevin Martensson",
+			"email": "kevinmartensson@gmail.com",
+			"url": "http://kevinmartensson.com"
+		}
+	],
+	"main": "index.js",
+	"bin": {
+		"jpegtran": "cli.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/yeoman/node-jpegtran-bin.git"
+	},
+	"scripts": {
+		"test": "mocha --reporter list --timeout 0",
+		"postinstall": "node index.js"
+	},
+	"engines": {
+		"node": ">=0.10.0"
+	},
+	"dependencies": {
+		"bin-wrapper": "~0.2.0",
+		"chalk": "~0.4.0"
+	},
+	"devDependencies": {
+		"bin-check": "~0.1.0",
+		"mocha": "~1.18.2",
+		"rimraf": "~2.2.6"
+	},
+	"files": [
+		"cli.js",
+		"index.js",
+		"test"
+	]
 }
