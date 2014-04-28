@@ -39,7 +39,7 @@ fs.exists(bin.use(), function (exists) {
 
 		bin.run(args, function (err) {
 			if (err) {
-				console.log(chalk.red('✗ ' + err));
+				console.log(chalk.red('✗ pre-build test failed, compiling from source...'));
 
 				var builder = new BinBuild()
 					.src('http://downloads.sourceforge.net/project/libjpeg-turbo/1.3.0/libjpeg-turbo-1.3.0.tar.gz')
