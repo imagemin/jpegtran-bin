@@ -19,21 +19,21 @@ describe('jpegtran()', function () {
 	});
 
 	it('should rebuild the jpegtran binaries', function (cb) {
+		var tmp = path.join(__dirname, 'tmp');
 		var builder = new BinBuild()
 			.src('http://downloads.sourceforge.net/project/libjpeg-turbo/1.3.0/libjpeg-turbo-1.3.0.tar.gz')
-			.cfg('./configure --disable-shared --prefix="' + path.join(__dirname, 'tmp') + '"')
+			.cfg('./configure --disable-shared --prefix="' + tmp + '" --bindir="' + tmp + '"')
 			.make('make install');
 
 		builder.build(function (err) {
 			assert(!err);
-			assert(fs.existsSync(path.join(__dirname, 'tmp/jpegtran')));
+			assert(fs.existsSync(path.join(tmp, 'jpegtran')));
 			cb();
 		});
 	});
 
 	it('should return path to binary and verify that it is working', function (cb) {
 		var binPath = require('../').path;
-
 		var args = [
 			'-copy', 'none',
 			'-optimize',

@@ -43,7 +43,7 @@ fs.exists(bin.use(), function (exists) {
 
 				var builder = new BinBuild()
 					.src('http://downloads.sourceforge.net/project/libjpeg-turbo/1.3.0/libjpeg-turbo-1.3.0.tar.gz')
-					.cfg('./configure --disable-shared --prefix="' + bin.dest() + '"')
+					.cfg('./configure --disable-shared --prefix="' + bin.dest() + '" --bindir="' + bin.dest() + '"')
 					.make('make install');
 
 				return builder.build(function (err) {

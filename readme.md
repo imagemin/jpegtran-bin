@@ -7,42 +7,55 @@ jpegtran 1.3 (part of [libjpeg-turbo](http://libjpeg-turbo.virtualgl.org/)) Node
 
 ## Install
 
-- Install with [npm](https://npmjs.org/package/jpegtran-bin): `npm install --save jpegtran-bin`
+```bash
+$ npm install --save jpegtran-bin
+```
 
 
-## Example usage
+## Usage
 
 ```js
 var execFile = require('child_process').execFile;
-var jpegtranPath = require('jpegtran-bin').path;
+var jpegtran = require('jpegtran-bin').path;
 
-execFile(jpegtranPath, ['-outfile', 'output.jpg', 'input.jpg'], function() {
-    console.log('Image minified');
+execFile(jpegtran, ['-outfile', 'output.jpg', 'input.jpg'], function (err) {
+	if (err) {
+		throw err;
+	}
+
+    console.log('Image minified!');
 });
 ```
 
-Can also be run directly from `./node_modules/.bin/jpegtran`.
+
+## CLI
+
+```bash
+$ npm install --global jpegtran-bin
+```
+
+```bash
+$ jpegtran --help
+```
 
 
-## Dev
+## Development
 
-Note to self on how to update the binaries.
+Instructions for manually compiling jpegtran:
 
 ### OS X and Linux
 
-- Run `npm install` to build the binary.
+```bash
+$ npm install
+```
 
 The `nasm` (Netwide Assember) package is required to build the binary on Ubuntu.
 
 ### Windows
 
-- Download the [Windows files 32/64-bit](http://sourceforge.net/projects/libjpeg-turbo/files/) (GCC compiled) on a Windows machine
-
-  (current version 1.3.0, x64 `libjpeg-turbo-1.3.0-gcc64.exe` and for x86 `libjpeg-turbo-1.3.0-gcc.exe`)
-- Run the downloaded file to extract
-- In the extracted folder go to the `bin` folder and copy `jpegtran.exe` and `libjpeg-62.dll` to `jpegtran-bin\vendor\` folder
-  
-  (for `grunt-contrib-imagemin` the folder is `grunt-contrib-imagemin\node_modules\jpegtran-bin\vendor\`)
+* Download the [Windows files 32/64-bit](http://sourceforge.net/projects/libjpeg-turbo/files/) (GCC compiled) on a Windows machine
+* Run the downloaded file to extract
+* In the extracted folder go to the `bin` folder and copy `jpegtran.exe` and `libjpeg-62.dll` to `jpegtran-bin/vendor/` folder
 
 
 ## License
