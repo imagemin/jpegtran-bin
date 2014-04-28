@@ -42,13 +42,14 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "bin-wrapper": "~0.2.0",
-    "chalk": "~0.4.0"
+    "bin-build": "^0.1.0",
+    "bin-wrapper": "^0.3.0",
+    "chalk": "^0.4.0"
   },
   "devDependencies": {
-    "bin-check": "~0.1.0",
-    "mocha": "~1.18.2",
-    "rimraf": "~2.2.6"
+    "bin-check": "^0.1.0",
+    "mocha": "^1.18.2",
+    "rimraf": "^2.2.6"
   },
   "files": [
     "cli.js",

@@ -3,10 +3,10 @@
 
 var assert = require('assert');
 var binCheck = require('bin-check');
-var BinWrapper = require('bin-wrapper');
+var BinBuild = require('bin-build');
+var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
-var spawn = require('child_process').spawn;
 var rm = require('rimraf');
 
 describe('jpegtran()', function () {
@@ -15,22 +15,20 @@ describe('jpegtran()', function () {
 	});
 
 	beforeEach(function () {
-		if (!fs.existsSync(path.join(__dirname, 'tmp'))) {
-			fs.mkdirSync(path.join(__dirname, 'tmp'));
-		}
+		fs.mkdirSync(path.join(__dirname, 'tmp'));
 	});
 
 	it('should rebuild the jpegtran binaries', function (cb) {
-		var bin = new BinWrapper({ bin: 'jpegtran', dest: path.join(__dirname, 'tmp') });
-		var bs = './configure --disable-shared ' +
-				 '--prefix="' + bin.dest + '" && ' + 'make install';
+		var builder = new BinBuild()
+			.src('http://downloads.sourceforge.net/project/libjpeg-turbo/1.3.0/libjpeg-turbo-1.3.0.tar.gz')
+			.cfg('./configure --disable-shared --prefix="' + path.join(__dirname, 'tmp') + '"')
+			.make('make install');
 
-		bin
-			.addSource('http://downloads.sourceforge.net/project/libjpeg-turbo/1.3.0/libjpeg-turbo-1.3.0.tar.gz')
-			.build(bs)
-			.on('finish', function () {
-				cb(assert(true));
-			});
+		builder.build(function (err) {
+			assert(!err);
+			assert(fs.existsSync(path.join(__dirname, 'tmp/jpegtran')));
+			cb();
+		});
 	});
 
 	it('should return path to binary and verify that it is working', function (cb) {
@@ -57,7 +55,7 @@ describe('jpegtran()', function () {
 			path.join(__dirname, 'fixtures', 'test.jpg')
 		];
 
-		spawn(binPath, args).on('close', function () {
+		execFile(binPath, args, function () {
 			var src = fs.statSync(path.join(__dirname, 'fixtures/test.jpg')).size;
 			var dest = fs.statSync(path.join(__dirname, 'tmp/test.jpg')).size;
 
