@@ -3,7 +3,7 @@
   "version": "0.2.6",
   "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD, Solaris and Windows",
   "license": "BSD",
-  "repository": "yeoman/jpegtran-bin",
+  "repository": "imagemin/jpegtran-bin",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
@@ -32,11 +32,11 @@
     "test"
   ],
   "keywords": [
+    "compress",
+    "image",
+    "img",
     "jpeg",
     "jpg",
-    "img",
-    "image",
-    "compress",
     "minify",
     "optimize"
   ],
