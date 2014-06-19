@@ -11,16 +11,16 @@ var path = require('path');
  */
 
 var bin = new BinWrapper()
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/osx/jpegtran', 'darwin')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/linux/x86/jpegtran', 'linux', 'x86')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/linux/x64/jpegtran', 'linux', 'x64')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/freebsd/jpegtran', 'freebsd')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/sunos/x86/jpegtran', 'sunos', 'x86')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/sunos/x64/jpegtran', 'sunos', 'x64')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/win/x86/jpegtran.exe', 'win32', 'x86')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/win/x64/jpegtran.exe', 'win32', 'x64')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/win/x86/libjpeg-62.dll', 'win32', 'x86')
-	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.4/vendor/win/x64/libjpeg-62.dll', 'win32', 'x64')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/osx/jpegtran', 'darwin')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/linux/x86/jpegtran', 'linux', 'x86')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/linux/x64/jpegtran', 'linux', 'x64')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/freebsd/jpegtran', 'freebsd')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/sunos/x86/jpegtran', 'sunos', 'x86')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/sunos/x64/jpegtran', 'sunos', 'x64')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/win/x86/jpegtran.exe', 'win32', 'x86')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/win/x64/jpegtran.exe', 'win32', 'x64')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/win/x86/libjpeg-62.dll', 'win32', 'x86')
+	.src('https://raw.github.com/imagemin/jpegtran-bin/0.2.7/vendor/win/x64/libjpeg-62.dll', 'win32', 'x64')
 	.dest(path.join(__dirname, 'vendor'))
 	.use(process.platform === 'win32' ? 'jpegtran.exe' : 'jpegtran');
 
