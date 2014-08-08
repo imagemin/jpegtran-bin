@@ -23,7 +23,7 @@
     "jpegtran": "cli.js"
   },
   "scripts": {
-    "test": "mocha --reporter list --timeout 50000",
+    "test": "mocha --reporter list --timeout 100000",
     "postinstall": "node index.js"
   },
   "files": [
