@@ -22,8 +22,8 @@ describe('jpegtran()', function () {
 		var tmp = path.join(__dirname, 'tmp');
 		var builder = new BinBuild()
 			.src('http://downloads.sourceforge.net/project/libjpeg-turbo/1.3.0/libjpeg-turbo-1.3.0.tar.gz')
-			.cfg('./configure --disable-shared --prefix="' + tmp + '" --bindir="' + tmp + '"')
-			.make('make install');
+			.cmd('./configure --disable-shared --prefix="' + tmp + '" --bindir="' + tmp + '"')
+			.cmd('make install');
 
 		builder.build(function (err) {
 			assert(!err);
@@ -42,7 +42,9 @@ describe('jpegtran()', function () {
 		];
 
 		binCheck(binPath, args, function (err, works) {
-			cb(assert.equal(works, true));
+			assert(!err);
+			assert.equal(works, true);
+			cb();
 		});
 	});
 
@@ -55,11 +57,13 @@ describe('jpegtran()', function () {
 			path.join(__dirname, 'fixtures', 'test.jpg')
 		];
 
-		execFile(binPath, args, function () {
+		execFile(binPath, args, function (err) {
 			var src = fs.statSync(path.join(__dirname, 'fixtures/test.jpg')).size;
 			var dest = fs.statSync(path.join(__dirname, 'tmp/test.jpg')).size;
 
-			cb(assert(dest < src));
+			assert(!err);
+			assert(dest < src);
+			cb();
 		});
 	});
 });
