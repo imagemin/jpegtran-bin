@@ -2,7 +2,7 @@
   "name": "jpegtran-bin",
   "version": "0.2.8",
   "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD, Solaris and Windows",
-  "license": "BSD",
+  "license": "MIT",
   "repository": "imagemin/jpegtran-bin",
   "author": {
     "name": "Sindre Sorhus",
