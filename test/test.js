@@ -13,9 +13,16 @@ var tmp = path.join(__dirname, 'tmp');
 test('rebuild the jpegtran binaries', function (t) {
 	t.plan(3);
 
+	var flags = '';
+	var version = require('../').version;
+
+	if (process.platform === 'darwin' && process.arch === 'x64') {
+		flags = 'CFLAGS="-m32" LDFLAGS="-m32"';
+	}
+
 	var builder = new BinBuild()
-		.src('http://downloads.sourceforge.net/project/libjpeg-turbo/1.3.0/libjpeg-turbo-1.3.0.tar.gz')
-		.cmd('./configure --disable-shared --prefix="' + tmp + '" --bindir="' + tmp + '"')
+		.src('http://downloads.sourceforge.net/project/libjpeg-turbo/' + version + '/libjpeg-turbo-' + version + '.tar.gz')
+		.cmd(flags + ' ./configure --disable-shared --prefix="' + tmp + '" --bindir="' + tmp + '"')
 		.cmd('make install');
 
 	builder.build(function (err) {
