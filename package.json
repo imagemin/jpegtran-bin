@@ -1,7 +1,7 @@
 {
   "name": "jpegtran-bin",
   "version": "1.0.2",
-  "description": "jpegtran (part of libjpeg-turbo) wrapper that makes it seamlessly available as a local dependency on OS X, Linux, FreeBSD, Solaris and Windows",
+  "description": "jpegtran (part of libjpeg-turbo) bin-wrapper that makes it seamlessly available as a local dependency",
   "license": "MIT",
   "repository": "imagemin/jpegtran-bin",
   "author": {
