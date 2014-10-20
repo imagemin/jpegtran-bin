@@ -27,7 +27,7 @@ test('rebuild the jpegtran binaries', function (t) {
 		.cmd('make install');
 
 	builder.run(function (err) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		fs.exists(path.join(tmp, 'jpegtran'), function (exists) {
 			t.assert(exists);
@@ -44,7 +44,7 @@ test('return path to binary and verify that it is working', function (t) {
 	];
 
 	binCheck(require('../').path, args, function (err, works) {
-		t.assert(!err);
+		t.assert(!err, err);
 		t.assert(works);
 	});
 });
@@ -58,13 +58,13 @@ test('minify a JPG', function (t) {
 	];
 
 	execFile(require('../').path, args, function (err) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		fs.stat(path.join(__dirname, 'fixtures/test.jpg'), function (err, a) {
-			t.assert(!err);
+			t.assert(!err, err);
 
 			fs.stat(path.join(tmp, 'test.jpg'), function (err, b) {
-				t.assert(!err);
+				t.assert(!err, err);
 				t.assert(b.size < a.size);
 			});
 		});
