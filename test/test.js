@@ -25,7 +25,7 @@ test('rebuild the jpegtran binaries', function (t) {
 		.cmd(flags + ' ./configure --disable-shared --prefix="' + tmp + '" --bindir="' + tmp + '"')
 		.cmd('make install');
 
-	builder.build(function (err) {
+	builder.run(function (err) {
 		t.assert(!err);
 
 		fs.exists(path.join(tmp, 'jpegtran'), function (exists) {
