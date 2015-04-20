@@ -47,7 +47,7 @@ it('return path to binary and verify that it is working', function (cb) {
 		path.join(__dirname, 'fixtures/test.jpg')
 	];
 
-	binCheck(require('../').path, args, function (err, works) {
+	binCheck(require('../'), args, function (err, works) {
 		assert(!err);
 		assert(works);
 		cb();
@@ -62,7 +62,7 @@ it('minify a JPG', function (cb) {
 		src
 	];
 
-	execFile(require('../').path, args, function (err) {
+	execFile(require('../'), args, function (err) {
 		assert(!err);
 
 		compareSize(src, dest, function (err, res) {

@@ -14,7 +14,7 @@ $ npm install --save jpegtran-bin
 
 ```js
 var execFile = require('child_process').execFile;
-var jpegtran = require('jpegtran-bin').path;
+var jpegtran = require('jpegtran-bin');
 
 execFile(jpegtran, ['-outfile', 'output.jpg', 'input.jpg'], function (err) {
 	console.log('Image minified!');
