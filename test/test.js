@@ -1,11 +1,11 @@
 'use strict';
 
-var binCheck = require('bin-check');
-var BinBuild = require('bin-build');
-var compareSize = require('compare-size');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
+var BinBuild = require('bin-build');
+var binCheck = require('bin-check');
+var compareSize = require('compare-size');
 var test = require('ava');
 var tmp = path.join(__dirname, 'tmp');
 
@@ -21,19 +21,14 @@ test('rebuild the jpegtran binaries', function (t) {
 		cfg = 'CFLAGS="-m32" LDFLAGS="-m32" ' + cfg;
 	}
 
-	var version = require('../').version;
-	var builder = new BinBuild()
-		.src('http://downloads.sourceforge.net/project/libjpeg-turbo/' + version + '/libjpeg-turbo-' + version + '.tar.gz')
+	new BinBuild()
+		.src('http://downloads.sourceforge.net/project/libjpeg-turbo/1.4.0/libjpeg-turbo-1.4.0.tar.gz')
 		.cmd(cfg)
-		.cmd('make install');
-
-	builder.run(function (err) {
-		t.assert(!err, err);
-
-		fs.exists(path.join(tmp, 'jpegtran'), function (exists) {
-			t.assert(exists);
+		.cmd('make install')
+		.run(function (err) {
+			t.assert(!err, err);
+			t.assert(fs.statSync(path.join(tmp, 'jpegtran')).isFile());
 		});
-	});
 });
 
 test('return path to binary and verify that it is working', function (t) {
