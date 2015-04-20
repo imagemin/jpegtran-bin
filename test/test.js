@@ -1,17 +1,26 @@
+/*global afterEach,beforeEach,it*/
 'use strict';
 
+var assert = require('assert');
 var execFile = require('child_process').execFile;
 var fs = require('fs');
 var path = require('path');
 var BinBuild = require('bin-build');
 var binCheck = require('bin-check');
 var compareSize = require('compare-size');
-var test = require('ava');
+var mkdirp = require('mkdirp');
+var rimraf = require('rimraf');
 var tmp = path.join(__dirname, 'tmp');
 
-test('rebuild the jpegtran binaries', function (t) {
-	t.plan(2);
+beforeEach(function () {
+	mkdirp.sync(tmp);
+});
 
+afterEach(function () {
+	rimraf.sync(tmp);
+});
+
+it('rebuild the jpegtran binaries', function (cb) {
 	var cfg = [
 		'./configure --disable-shared',
 		'--prefix="' + tmp + '" --bindir="' + tmp + '"'
@@ -26,28 +35,26 @@ test('rebuild the jpegtran binaries', function (t) {
 		.cmd(cfg)
 		.cmd('make install')
 		.run(function (err) {
-			t.assert(!err, err);
-			t.assert(fs.statSync(path.join(tmp, 'jpegtran')).isFile());
+			assert(!err);
+			assert(fs.statSync(path.join(tmp, 'jpegtran')).isFile());
+			cb();
 		});
 });
 
-test('return path to binary and verify that it is working', function (t) {
-	t.plan(2);
-
+it('return path to binary and verify that it is working', function (cb) {
 	var args = [
-		'-outfile', path.join(tmp, 'test-path.jpg'),
+		'-outfile', path.join(tmp, 'test.jpg'),
 		path.join(__dirname, 'fixtures/test.jpg')
 	];
 
 	binCheck(require('../').path, args, function (err, works) {
-		t.assert(!err, err);
-		t.assert(works);
+		assert(!err);
+		assert(works);
+		cb();
 	});
 });
 
-test('minify a JPG', function (t) {
-	t.plan(3);
-
+it('minify a JPG', function (cb) {
 	var src = path.join(__dirname, 'fixtures/test.jpg');
 	var dest = path.join(tmp, 'test.jpg');
 	var args = [
@@ -56,11 +63,12 @@ test('minify a JPG', function (t) {
 	];
 
 	execFile(require('../').path, args, function (err) {
-		t.assert(!err, err);
+		assert(!err);
 
 		compareSize(src, dest, function (err, res) {
-			t.assert(!err, err);
-			t.assert(res[dest] < res[src]);
+			assert(!err);
+			assert(res[dest] < res[src]);
+			cb();
 		});
 	});
 });
