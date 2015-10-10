@@ -26,12 +26,8 @@ it('rebuild the jpegtran binaries', function (cb) {
 		'--prefix="' + tmp + '" --bindir="' + tmp + '"'
 	].join(' ');
 
-	if (process.platform === 'darwin' && process.arch === 'x64') {
-		cfg = 'CFLAGS="-m32" LDFLAGS="-m32" ' + cfg;
-	}
-
 	new BinBuild()
-		.src('http://downloads.sourceforge.net/project/libjpeg-turbo/1.4.1/libjpeg-turbo-1.4.1.tar.gz')
+		.src('https://downloads.sourceforge.net/project/libjpeg-turbo/1.4.2/libjpeg-turbo-1.4.2.tar.gz')
 		.cmd(cfg)
 		.cmd('make install')
 		.run(function (err) {
