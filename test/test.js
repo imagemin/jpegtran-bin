@@ -31,7 +31,11 @@ it('rebuild the jpegtran binaries', function (cb) {
 		.cmd(cfg)
 		.cmd('make install')
 		.run(function (err) {
-			assert(!err);
+			if (err) {
+				cb(err);
+				return;
+			}
+
 			assert(fs.statSync(path.join(tmp, 'jpegtran')).isFile());
 			cb();
 		});
@@ -55,10 +59,17 @@ it('minify a JPG', function (cb) {
 	];
 
 	execFile(require('../'), args, function (err) {
-		assert(!err);
+		if (err) {
+			cb(err);
+			return;
+		}
 
 		compareSize(src, dest, function (err, res) {
-			assert(!err);
+			if (err) {
+				cb(err);
+				return;
+			}
+
 			assert(res[dest] < res[src]);
 			cb();
 		});
