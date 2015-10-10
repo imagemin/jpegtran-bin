@@ -37,17 +37,13 @@ it('rebuild the jpegtran binaries', function (cb) {
 		});
 });
 
-it('return path to binary and verify that it is working', function (cb) {
+it('return path to binary and verify that it is working', function () {
 	var args = [
 		'-outfile', path.join(tmp, 'test.jpg'),
 		path.join(__dirname, 'fixtures/test.jpg')
 	];
 
-	binCheck(require('../'), args, function (err, works) {
-		assert(!err);
-		assert(works);
-		cb();
-	});
+	return binCheck(require('../'), args).then(assert);
 });
 
 it('minify a JPG', function (cb) {
