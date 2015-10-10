@@ -28,6 +28,7 @@ it('rebuild the jpegtran binaries', function (cb) {
 
 	new BinBuild()
 		.src('https://downloads.sourceforge.net/project/libjpeg-turbo/1.4.2/libjpeg-turbo-1.4.2.tar.gz')
+		.cmd('touch configure.ac aclocal.m4 configure Makefile.am Makefile.in')
 		.cmd(cfg)
 		.cmd('make install')
 		.run(function (err) {
