@@ -48,7 +48,9 @@
   "dependencies": {
     "bin-build": "^2.0.0",
     "bin-wrapper": "^3.0.0",
-    "logalot": "^2.0.0"
+    "logalot": "^2.0.0",
+    "which": "^1.2.9",
+    "fs-extra": "^0.30.0"
   },
   "devDependencies": {
     "bin-check": "^3.0.0",
