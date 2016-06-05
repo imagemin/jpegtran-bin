@@ -2,21 +2,19 @@
 /* eslint-env mocha */
 var assert = require('assert');
 var execFile = require('child_process').execFile;
-var fs = require('fs');
 var path = require('path');
+var fs = require('fs-extra');
 var BinBuild = require('bin-build');
 var binCheck = require('bin-check');
 var compareSize = require('compare-size');
-var mkdirp = require('mkdirp');
-var rimraf = require('rimraf');
 var tmp = path.join(__dirname, 'tmp');
 
 beforeEach(function () {
-	mkdirp.sync(tmp);
+	fs.mkdirpSync(tmp);
 });
 
 afterEach(function () {
-	rimraf.sync(tmp);
+	fs.removeSync(tmp);
 });
 
 it('rebuild the jpegtran binaries', function (cb) {
