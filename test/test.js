@@ -27,7 +27,7 @@ it('rebuild the jpegtran binaries', function (cb) {
 	].join(' ');
 
 	new BinBuild()
-		.src('https://downloads.sourceforge.net/project/libjpeg-turbo/1.5.0/libjpeg-turbo-1.5.0.tar.gz')
+		.src('https://downloads.sourceforge.net/project/libjpeg-turbo/1.5.1/libjpeg-turbo-1.5.1.tar.gz')
 		.cmd(cfg)
 		.cmd('make install')
 		.run(function (err) {
