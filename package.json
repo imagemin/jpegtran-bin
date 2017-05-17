@@ -49,13 +49,13 @@
   ],
   "dependencies": {
     "bin-build": "^2.2.0",
-    "bin-wrapper": "^3.0.0",
+    "bin-wrapper": "^3.0.2",
     "logalot": "^2.0.0"
   },
   "devDependencies": {
     "ava": "*",
     "bin-check": "^4.0.1",
-    "compare-size": "^3.0.0",
+    "compare-size": "^3.0.",
     "execa": "^0.6.3",
     "tempy": "^0.1.0",
     "xo": "*"
