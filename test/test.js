@@ -5,7 +5,7 @@ const test = require('ava');
 const execa = require('execa');
 const tempy = require('tempy');
 const binCheck = require('bin-check');
-const BinBuild = require('bin-build');
+const binBuild = require('bin-build');
 const compareSize = require('compare-size');
 const jpegtran = require('..');
 
@@ -16,15 +16,16 @@ test.cb('rebuild the jpegtran binaries', t => {
 		`--prefix="${tmp}" --bindir="${tmp}"`
 	].join(' ');
 
-	new BinBuild()
-		.src('https://downloads.sourceforge.net/project/libjpeg-turbo/1.5.1/libjpeg-turbo-1.5.1.tar.gz')
-		.cmd(cfg)
-		.cmd('make install')
-		.run(err => {
-			t.ifError(err);
-			t.true(fs.existsSync(path.join(tmp, 'jpegtran')));
-			t.end();
-		});
+	binBuild.url('https://downloads.sourceforge.net/project/libjpeg-turbo/1.5.1/libjpeg-turbo-1.5.1.tar.gz', [
+		cfg,
+		'make install'
+	]).then(() => {
+		t.true(fs.existsSync(path.join(tmp, 'jpegtran')));
+		t.end();
+	}).catch(err => {
+		t.ifError(err);
+		t.end();
+	});
 });
 
 test('return path to binary and verify that it is working', async t => {
