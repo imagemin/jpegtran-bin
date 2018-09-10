@@ -9,6 +9,14 @@ const binBuild = require('bin-build');
 const compareSize = require('compare-size');
 const jpegtran = require('..');
 
+async function makeExecutable() {
+	try {
+		await execa('chmod', ['+x', jpegtran]);
+	} catch (_) {
+		console.log('not executable');
+	}
+}
+
 test('rebuild the jpegtran binaries', async t => {
 	const tmp = tempy.directory();
 	const cfg = [
@@ -25,10 +33,12 @@ test('rebuild the jpegtran binaries', async t => {
 });
 
 test('return path to binary and verify that it is working', async t => {
+	makeExecutable();
 	t.true(await binCheck(jpegtran, ['-version']));
 });
 
 test('minify a JPG', async t => {
+	makeExecutable();
 	const tmp = tempy.directory();
 	const src = path.join(__dirname, 'fixtures/test.jpg');
 	const dest = path.join(tmp, 'test.jpg');
