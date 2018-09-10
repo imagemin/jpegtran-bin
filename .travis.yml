@@ -1,8 +1,9 @@
 sudo: false
 language: node_js
 node_js:
+  - '10'
+  - '8'
   - '6'
-  - '4'
 addons:
   apt:
     packages: nasm
