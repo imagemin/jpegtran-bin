@@ -10,10 +10,10 @@ const compareSize = require('compare-size');
 const jpegtran = require('..');
 
 test('rebuild the jpegtran binaries', async t => {
-	const tmp = tempy.directory();
+	const temporary = tempy.directory();
 	const cfg = [
 		'./configure --disable-shared',
-		`--prefix="${tmp}" --bindir="${tmp}"`
+		`--prefix="${temporary}" --bindir="${temporary}"`
 	].join(' ');
 
 	await binBuild.url('https://downloads.sourceforge.net/project/libjpeg-turbo/1.5.1/libjpeg-turbo-1.5.1.tar.gz', [
@@ -21,7 +21,7 @@ test('rebuild the jpegtran binaries', async t => {
 		'make install'
 	]);
 
-	t.true(fs.existsSync(path.join(tmp, 'jpegtran')));
+	t.true(fs.existsSync(path.join(temporary, 'jpegtran')));
 });
 
 test('return path to binary and verify that it is working', async t => {
@@ -29,9 +29,9 @@ test('return path to binary and verify that it is working', async t => {
 });
 
 test('minify a JPG', async t => {
-	const tmp = tempy.directory();
+	const temporary = tempy.directory();
 	const src = path.join(__dirname, 'fixtures/test.jpg');
-	const dest = path.join(tmp, 'test.jpg');
+	const dest = path.join(temporary, 'test.jpg');
 	const args = [
 		'-outfile',
 		dest,
@@ -39,7 +39,7 @@ test('minify a JPG', async t => {
 	];
 
 	await execa(jpegtran, args);
-	const res = await compareSize(src, dest);
+	const result = await compareSize(src, dest);
 
-	t.true(res[dest] < res[src]);
+	t.true(result[dest] < result[src]);
 });
