@@ -16,7 +16,7 @@ test('rebuild the jpegtran binaries', async t => {
 		`--prefix="${temporary}" --bindir="${temporary}"`
 	].join(' ');
 
-	await binBuild.url('https://downloads.sourceforge.net/project/libjpeg-turbo/1.5.1/libjpeg-turbo-1.5.1.tar.gz', [
+	await binBuild.file(path.resolve(__dirname, '../vendor/source/libjpeg-turbo-1.5.1.tar.gz'), [
 		cfg,
 		'make install'
 	]);
