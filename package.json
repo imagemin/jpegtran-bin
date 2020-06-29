@@ -34,7 +34,8 @@
     "index.js",
     "cli.js",
     "lib",
-    "test"
+    "test",
+    "vendor/source"
   ],
   "keywords": [
     "imagemin",
