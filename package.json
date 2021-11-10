@@ -5,6 +5,7 @@
   "license": "MIT",
   "repository": "imagemin/jpegtran-bin",
   "type": "module",
+  "exports": "./index.js",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
